@@ -33,7 +33,7 @@
             // events on which to check for changes
             changingEvents: "change keyup paste",
             // fields on which to check for changes
-            changingFields: "input,select,textarea,fileupload"
+            changingFields: "input,select,textarea,fileupload,[contenteditable=true]"
         },
         init: function() {
             this.options = parser.parse(this.$el);
