@@ -56,8 +56,9 @@
                 },
                 success: function(data) {
                     $("#global-statusmessage").html(
-                        $("#global-statusmessage", data).html()
+                        $("#global-statusmessage", "<div>" + data + "</div>").html()
                     );
+                    patterns.scan($("#global-statusmessage"));
                 }
             });
         },
@@ -76,8 +77,9 @@
                 },
                 success: function(data) {
                     $("#global-statusmessage").append(
-                        $("#global-statusmessage", data).html()
+                        $("#global-statusmessage", "<div>" + data + "</div>").html()
                     );
+                    patterns.scan($("#global-statusmessage"));
                 }
             });
             self._changed = false;
