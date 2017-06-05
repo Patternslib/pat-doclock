@@ -40,6 +40,17 @@
             log.debug("pattern initialized");
             this.set_listeners();
         },
+        inject_response: function(data) {
+            var $data = $("<div>" + data + "</div>");
+            $("#global-statusmessage").html(
+                $data.find("#global-statusmessage").html()
+            );
+            registry.scan($("#global-statusmessage"));
+            $("#saving-badge").html(
+                $data.find("#saving-badge").html()
+            );
+            registry.scan($("#saving-badge"));
+        },
         lock: function() {
             var self = this;
             if (self._changed) {
@@ -54,12 +65,7 @@
                 data: {
                     "lock": true
                 },
-                success: function(data) {
-                    $("#global-statusmessage").html(
-                        $("#global-statusmessage", "<div>" + data + "</div>").html()
-                    );
-                    patterns.scan($("#global-statusmessage"));
-                }
+                success: this.inject_response.bind(this)
             });
         },
         unlock: function() {
@@ -75,12 +81,7 @@
                 data: {
                     "unlock": true
                 },
-                success: function(data) {
-                    $("#global-statusmessage").append(
-                        $("#global-statusmessage", "<div>" + data + "</div>").html()
-                    );
-                    patterns.scan($("#global-statusmessage"));
-                }
+                success: this.inject_response.bind(this)
             });
             self._changed = false;
         },
