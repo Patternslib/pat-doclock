@@ -46,10 +46,10 @@
                 $data.find("#global-statusmessage").html()
             );
             registry.scan($("#global-statusmessage"));
-            $("#saving-badge").html(
-                $data.find("#saving-badge").html()
+            $(".quick-functions #saving-badge, .quick-functions #save-button").replaceWith(
+                $data.find("#content-core").html()
             );
-            registry.scan($("#saving-badge"));
+            registry.scan($(".quick-functions #saving-badge, .quick-functions #save-button"));
         },
         lock: function() {
             var self = this;
