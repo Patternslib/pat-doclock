@@ -1,25 +1,62 @@
 {
-    "name": "pat-doclock",
-    "version": "0.0.1",
-    "description": "A pattern that locks",
-    "keywords": [
-        "patternslib",
-        "pattern"
-    ],
-    "author": {
-        "name": "Plone Intranet Team",
-        "email": "ploneintranet-dev@groups.io"
+  "name": "pat-doclock",
+  "version": "1.0.0",
+  "description": "A pattern that locks",
+  "keywords": [
+    "patternslib",
+    "pattern"
+  ],
+  "license": "BSD-3-Clause",
+  "author": {
+    "name": "Plone Intranet Team",
+    "email": "ploneintranet-dev@groups.io"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:ploneintranet/pat-doclock.git"
+  },
+  "dependencies": {
+    "patternslib": "https://github.com/Patternslib/Patterns#cc8d8d4ddfacc9d80fecf0b183f39eef365abd9f"
+  },
+  "devDependencies": {
+    "@babel/preset-env": "^7.9.6",
+    "babel-eslint": "^10.1.0",
+    "babel-loader": "^8.1.0",
+    "core-js": "3",
+    "eslint": "^7.0.0",
+    "jquery": "^3.5.0",
+    "underscore": "^1.9.1",
+    "webpack": "^4.43.0",
+    "webpack-cli": "^3.3.11",
+    "webpack-dev-server": "^3.10.3"
+  },
+  "scripts": {
+    "start": "webpack-dev-server --config webpack.config.js --open --env.NODE_ENV=development",
+    "build": "webpack --config webpack.config.js --env.NODE_ENV=production"
+  },
+  "eslintConfig": {
+    "root": true,
+    "env": {
+      "browser": true
     },
-    "repository": {
-        "type": "git",
-        "url": "git@github.com:ploneintranet/pat-doclock.git"
-    },
-    "dependencies": {},
-    "devDependencies": {
-        "bower": "latest",
-        "requirejs": "",
-        "underscore": "",
-        "http-server": ""
-    },
-    "license": "BSD-3-Clause"
+    "parser": "babel-eslint"
+  },
+  "babel": {
+    "presets": [
+      [
+        "@babel/preset-env",
+        {
+          "useBuiltIns": "entry",
+          "corejs": 3
+        }
+      ]
+    ]
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ]
+  }
 }
