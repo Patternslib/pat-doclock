@@ -16,7 +16,7 @@
     "url": "git@github.com:ploneintranet/pat-doclock.git"
   },
   "dependencies": {
-    "patternslib": "https://github.com/Patternslib/Patterns#es6"
+    "patternslib": "https://github.com/Patternslib/Patterns#master"
   },
   "devDependencies": {
     "@babel/preset-env": "^7.9.6",
