@@ -15,11 +15,5 @@
         "url": "git@github.com:ploneintranet/pat-doclock.git"
     },
     "dependencies": {},
-    "devDependencies": {
-        "bower": "latest",
-        "requirejs": "",
-        "underscore": "",
-        "http-server": ""
-    },
     "license": "BSD-3-Clause"
 }
