@@ -1,7 +1,7 @@
 import $ from "jquery";
-import Base from "patternslib/src/core/base";
-import Parser from "patternslib/src/core/parser";
-import registry from "patternslib/src/core/registry";
+import Base from "@patternslib/patternslib/src/core/base";
+import Parser from "@patternslib/patternslib/src/core/parser";
+import registry from "@patternslib/patternslib/src/core/registry";
 
 const parser = new Parser("doclock");
 parser.add_argument("url", "");
@@ -14,8 +14,7 @@ export default Base.extend({
         // events on which to check for changes
         changingEvents: "change keyup paste",
         // fields on which to check for changes
-        changingFields:
-            "input,select,textarea,fileupload,[contenteditable=true]",
+        changingFields: "input,select,textarea,fileupload,[contenteditable=true]",
     },
     init: function () {
         this.options = parser.parse(this.$el);
@@ -23,13 +22,11 @@ export default Base.extend({
     },
     inject_response: function (data) {
         var $data = $("<div>" + data + "</div>");
-        $("#global-statusmessage").html(
-            $data.find("#global-statusmessage").html()
-        );
+        $("#global-statusmessage").html($data.find("#global-statusmessage").html());
         registry.scan($("#global-statusmessage"));
-        $(
-            ".quick-functions #saving-badge, .quick-functions #save-button"
-        ).replaceWith($data.find("#content-core").html());
+        $(".quick-functions #saving-badge, .quick-functions #save-button").replaceWith(
+            $data.find("#content-core").html()
+        );
         registry.scan(
             $(".quick-functions #saving-badge, .quick-functions #save-button")
         );
