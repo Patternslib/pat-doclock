@@ -1,6 +1,6 @@
 {
-    "name": "pat-doclock",
-    "version": "1.0.0",
+    "name": "@patternslib/pat-doclock",
+    "version": "0.9.0",
     "description": "A pattern for doclock",
     "license": "MIT",
     "main": "./src/pat-doclock.js",
@@ -69,9 +69,9 @@
         "name": "Syslab GesmbH",
         "email": "dev@syslab.com"
     },
-    "homepage": "https://github.com/ploneintranet/pat-doclock",
+    "homepage": "https://github.com/patternslib/pat-doclock",
     "repository": {
         "type": "git",
-        "url": "https://github.com/ploneintranet/pat-doclock.git"
+        "url": "https://github.com/patternslib/pat-doclock.git"
     }
 }
