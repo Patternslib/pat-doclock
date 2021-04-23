@@ -1,3 +1,12 @@
+### [1.0.1](https://github.com/patternslib/pat-doclock/compare/1.0.0...1.0.1) (2021-04-23)
+
+
+### Maintenance
+
+* **make release-patch:** Add missing patch for patch level releases. ([5f3a2aa](https://github.com/patternslib/pat-doclock/commit/5f3a2aa894c7f0b6b46058514f649eb89dc37174))
+* **Release:** Remove the release-web target. Only Patternslib releases are pushed to Patterns-releases on Github. ([4e41fbc](https://github.com/patternslib/pat-doclock/commit/4e41fbc3c462ab01578e0dd5d4fae3e97e1bfc81))
+* **Release process:** Do not include the release commit in the changelog. ([4b296a4](https://github.com/patternslib/pat-doclock/commit/4b296a49a0d24fc9822094325b963a6a5dba055a))
+
 ## 1.0.0 (2021-04-20)
 
 
