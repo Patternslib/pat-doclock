@@ -2,14 +2,15 @@ import "regenerator-runtime/runtime"; // needed for ``await`` support
 import $ from "jquery";
 import pattern from "./pat-doclock";
 import utils from "@patternslib/patternslib/src/core/utils";
+import { jest } from "@jest/globals";
 
 describe("pat-doclock", () => {
     beforeEach(() => {
         document.body.innerHTML = "";
     });
 
-    it("is initialized correctly", async (done) => {
-        const spy_ajax = spyOn($, "ajax");
+    it("is initialized correctly", async () => {
+        const spy_ajax = jest.spyOn($, "ajax");
 
         document.body.innerHTML = `
             <form class="pat-doclock" data-pat-doclock="url: ./toggle-lock">
@@ -31,7 +32,5 @@ describe("pat-doclock", () => {
             .dispatchEvent(new Event("DOMNodeRemoved"));
 
         expect(spy_ajax).toHaveBeenCalledTimes(2);
-
-        done();
     });
 });
