@@ -1,7 +1,10 @@
 import "regenerator-runtime/runtime"; // needed for ``await`` support
 import Base from "@patternslib/patternslib/src/core/base";
+import logging from "@patternslib/patternslib/src/core/logging";
 import Parser from "@patternslib/patternslib/src/core/parser";
 import registry from "@patternslib/patternslib/src/core/registry";
+
+const logger = logging.getLogger("pat.doclock");
 
 export const parser = new Parser("doclock");
 parser.add_argument("url", "");
@@ -31,6 +34,7 @@ export default Base.extend({
             if (record.type === "childList") {
                 for (const el of record.removedNodes) {
                     if (el === this.el) {
+                        logger.debug("form removed");
                         this.unlock();
                     }
                 }
@@ -51,6 +55,7 @@ export default Base.extend({
         const status = data_el.querySelector("#global-statusmessage");
         if (status) {
             for (const el of document.querySelectorAll("#global-statusmessage")) {
+                logger.debug("replacing statusmessage");
                 el.innerHTML = status.innerHTML;
                 registry.scan(el);
             }
@@ -61,35 +66,46 @@ export default Base.extend({
             for (const el of document.querySelectorAll(
                 ".quick-functions #saving-badge, .quick-functions #save-button"
             )) {
+                logger.debug("replacing quick functions");
                 el.outerHTML = content.innerHTML;
                 registry.scan(el);
             }
         }
+
+        logger.debug("initialization done");
     },
 
     async lock() {
+        logger.debug("entering lock");
         if (this._changed) {
+            logger.debug("already locked");
             return;
         }
         if (!this.options.url) {
             return;
         }
+        logger.debug("locking");
         this._changed = true;
         const response = await fetch(`${this.options.url}?lock=true`);
         const data = await response.text();
         this.inject_response(data);
+        logger.debug("locked");
     },
 
     async unlock() {
+        logger.debug("entering unlock");
         if (!this._changed) {
+            logger.debug("already unlocked");
             return;
         }
         if (!this.options.url) {
             return;
         }
+        logger.debug("unlocking");
         const response = await fetch(`${this.options.url}?unlock=true`);
         const data = await response.text();
         this.inject_response(data);
         this._changed = false;
+        logger.debug("unlocked");
     },
 });
