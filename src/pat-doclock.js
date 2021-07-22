@@ -1,3 +1,4 @@
+import "regenerator-runtime/runtime"; // needed for ``await`` support
 import $ from "jquery";
 import Base from "@patternslib/patternslib/src/core/base";
 import Parser from "@patternslib/patternslib/src/core/parser";
@@ -56,7 +57,7 @@ export default Base.extend({
         );
     },
 
-    lock() {
+    async lock() {
         if (this._changed) {
             return;
         }
@@ -64,29 +65,21 @@ export default Base.extend({
             return;
         }
         this._changed = true;
-        $.ajax({
-            url: this.options.url,
-            data: {
-                lock: true,
-            },
-            success: this.inject_response.bind(this),
-        });
+        const response = await fetch(`${this.options.url}?lock=true`);
+        const data = await response.text();
+        this.inject_response(data);
     },
 
-    unlock() {
+    async unlock() {
         if (!this._changed) {
             return;
         }
         if (!this.options.url) {
             return;
         }
-        $.ajax({
-            url: this.options.url,
-            data: {
-                unlock: true,
-            },
-            success: this.inject_response.bind(this),
-        });
+        const response = await fetch(`${this.options.url}?unlock=true`);
+        const data = await response.text();
+        this.inject_response(data);
         this._changed = false;
     },
 });
