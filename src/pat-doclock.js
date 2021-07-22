@@ -1,5 +1,4 @@
 import "regenerator-runtime/runtime"; // needed for ``await`` support
-import $ from "jquery";
 import Base from "@patternslib/patternslib/src/core/base";
 import Parser from "@patternslib/patternslib/src/core/parser";
 import registry from "@patternslib/patternslib/src/core/registry";
@@ -46,15 +45,26 @@ export default Base.extend({
     },
 
     inject_response(data) {
-        var $data = $("<div>" + data + "</div>");
-        $("#global-statusmessage").html($data.find("#global-statusmessage").html());
-        registry.scan($("#global-statusmessage"));
-        $(".quick-functions #saving-badge, .quick-functions #save-button").replaceWith(
-            $data.find("#content-core").html()
-        );
-        registry.scan(
-            $(".quick-functions #saving-badge, .quick-functions #save-button")
-        );
+        const data_el = document.createElement("div");
+        data_el.innerHTML = data;
+
+        const status = data_el.querySelector("#global-statusmessage");
+        if (status) {
+            for (const el of document.querySelectorAll("#global-statusmessage")) {
+                el.innerHTML = status.innerHTML;
+                registry.scan(el);
+            }
+        }
+
+        const content = data_el.querySelector("#content-core");
+        if (content) {
+            for (const el of document.querySelectorAll(
+                ".quick-functions #saving-badge, .quick-functions #save-button"
+            )) {
+                el.outerHTML = content.innerHTML;
+                registry.scan(el);
+            }
+        }
     },
 
     async lock() {
