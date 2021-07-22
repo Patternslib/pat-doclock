@@ -1,8 +1,12 @@
 import "regenerator-runtime/runtime"; // needed for ``await`` support
-import $ from "jquery";
 import pattern from "./pat-doclock";
 import utils from "@patternslib/patternslib/src/core/utils";
 import { jest } from "@jest/globals";
+
+const mockFetch = () =>
+    Promise.resolve({
+        text: () => Promise.resolve("okay"),
+    });
 
 describe("pat-doclock", () => {
     beforeEach(() => {
@@ -10,7 +14,7 @@ describe("pat-doclock", () => {
     });
 
     it("is initialized correctly", async () => {
-        const spy_ajax = jest.spyOn($, "ajax");
+        global.fetch = jest.fn().mockImplementation(mockFetch);
 
         document.body.innerHTML = `
             <form class="pat-doclock" data-pat-doclock="url: ./toggle-lock">
@@ -21,14 +25,14 @@ describe("pat-doclock", () => {
         pattern.init(document.querySelector(".pat-doclock"));
         await utils.timeout(1);
 
-        expect(spy_ajax).not.toHaveBeenCalled();
+        expect(global.fetch).not.toHaveBeenCalled();
 
         document.querySelector("input[name=aha]").dispatchEvent(new Event("input"));
 
-        expect(spy_ajax).toHaveBeenCalledTimes(1);
+        expect(global.fetch).toHaveBeenCalledTimes(1);
 
         window.dispatchEvent(new Event("beforeunload"));
 
-        expect(spy_ajax).toHaveBeenCalledTimes(2);
+        expect(global.fetch).toHaveBeenCalledTimes(2);
     });
 });
