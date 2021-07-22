@@ -27,9 +27,7 @@ describe("pat-doclock", () => {
 
         expect(spy_ajax).toHaveBeenCalledTimes(1);
 
-        document
-            .querySelector("form.pat-doclock")
-            .dispatchEvent(new Event("DOMNodeRemoved"));
+        window.dispatchEvent(new Event("beforeunload"));
 
         expect(spy_ajax).toHaveBeenCalledTimes(2);
     });

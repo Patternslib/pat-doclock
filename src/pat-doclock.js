@@ -31,11 +31,16 @@ export default Base.extend({
         });
 
         // unlock when the form gets removed from the DOM
-        this.$el.bind("DOMNodeRemoved", (e) => {
-            if (e.target === this.el) {
-                this.unlock.bind(this)();
+        const remove_observer = new MutationObserver((record) => {
+            if (record.type === "childList") {
+                for (const el of record.removedNodes) {
+                    if (el === this.el) {
+                        this.unlock();
+                    }
+                }
             }
         });
+        remove_observer.observe(this.el.parentNode, { childList: true });
 
         // lock when elements are changed
         $(this.defaults.changingFields, this.$el).on(
