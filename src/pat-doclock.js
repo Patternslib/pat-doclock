@@ -11,12 +11,8 @@ export default Base.extend({
     trigger: ".pat-doclock",
     _changed: false,
 
-    defaults: {
-        // events on which to check for changes
-        changingEvents: "change keyup paste",
-        // fields on which to check for changes
-        changingFields: "input,select,textarea,fileupload,[contenteditable=true]",
-    },
+    // fields on which to check for changes
+    changing_fields: "input,select,textarea,fileupload,[contenteditable=true]",
 
     init() {
         if (!this.el.tagName === "FORM") {
@@ -43,10 +39,9 @@ export default Base.extend({
         remove_observer.observe(this.el.parentNode, { childList: true });
 
         // lock when elements are changed
-        $(this.defaults.changingFields, this.$el).on(
-            this.defaults.changingEvents,
-            this.lock.bind(this)
-        );
+        for (const field of this.el.querySelectorAll(this.changing_fields)) {
+            field.addEventListener("input", this.lock.bind(this));
+        }
     },
 
     inject_response(data) {
