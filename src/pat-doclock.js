@@ -3,24 +3,48 @@ import Base from "@patternslib/patternslib/src/core/base";
 import Parser from "@patternslib/patternslib/src/core/parser";
 import registry from "@patternslib/patternslib/src/core/registry";
 
-const parser = new Parser("doclock");
+export const parser = new Parser("doclock");
 parser.add_argument("url", "");
 
 export default Base.extend({
     name: "doclock",
     trigger: ".pat-doclock",
     _changed: false,
+
     defaults: {
         // events on which to check for changes
         changingEvents: "change keyup paste",
         // fields on which to check for changes
         changingFields: "input,select,textarea,fileupload,[contenteditable=true]",
     },
-    init: function () {
-        this.options = parser.parse(this.$el);
-        this.set_listeners();
+
+    init() {
+        if (!this.el.tagName === "FORM") {
+            return;
+        }
+
+        this.options = parser.parse(this.el, this.options);
+
+        // unlock when changing page
+        window.addEventListener("beforeunload", this.unlock.bind(this), {
+            capture: true,
+        });
+
+        // unlock when the form gets removed from the DOM
+        this.$el.bind("DOMNodeRemoved", (e) => {
+            if (e.target === this.el) {
+                this.unlock.bind(this)();
+            }
+        });
+
+        // lock when elements are changed
+        $(this.defaults.changingFields, this.$el).on(
+            this.defaults.changingEvents,
+            this.lock.bind(this)
+        );
     },
-    inject_response: function (data) {
+
+    inject_response(data) {
         var $data = $("<div>" + data + "</div>");
         $("#global-statusmessage").html($data.find("#global-statusmessage").html());
         registry.scan($("#global-statusmessage"));
@@ -31,59 +55,38 @@ export default Base.extend({
             $(".quick-functions #saving-badge, .quick-functions #save-button")
         );
     },
-    lock: function () {
-        var self = this;
-        if (self._changed) {
+
+    lock() {
+        if (this._changed) {
             return;
         }
-        if (!self.options.url) {
+        if (!this.options.url) {
             return;
         }
-        self._changed = true;
+        this._changed = true;
         $.ajax({
-            url: self.options.url,
+            url: this.options.url,
             data: {
                 lock: true,
             },
             success: this.inject_response.bind(this),
         });
     },
-    unlock: function () {
-        var self = this;
-        if (!self._changed) {
+
+    unlock() {
+        if (!this._changed) {
             return;
         }
-        if (!self.options.url) {
+        if (!this.options.url) {
             return;
         }
         $.ajax({
-            url: self.options.url,
+            url: this.options.url,
             data: {
                 unlock: true,
             },
             success: this.inject_response.bind(this),
         });
-        self._changed = false;
-    },
-    set_listeners: function () {
-        var self = this;
-        if (!self.$el.is("form")) {
-            return;
-        }
-        // unlock when changing page
-        $(window).on("beforeunload", self.unlock.bind(self));
-
-        // unlock when the form gets removed from the DOM
-        self.$el.bind("DOMNodeRemoved", function (e) {
-            if (e.target === self.$el[0]) {
-                self.unlock.bind(self)();
-            }
-        });
-
-        // lock when elements are changed
-        $(self.defaults.changingFields, self.$el).on(
-            self.defaults.changingEvents,
-            self.lock.bind(self)
-        );
+        this._changed = false;
     },
 });
