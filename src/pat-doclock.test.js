@@ -23,7 +23,7 @@ describe("pat-doclock", () => {
 
         expect(spy_ajax).not.toHaveBeenCalled();
 
-        document.querySelector("input[name=aha]").dispatchEvent(new Event("change"));
+        document.querySelector("input[name=aha]").dispatchEvent(new Event("input"));
 
         expect(spy_ajax).toHaveBeenCalledTimes(1);
 
