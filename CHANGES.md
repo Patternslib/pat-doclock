@@ -1,3 +1,20 @@
+## [1.2.0](https://github.com/patternslib/pat-doclock/compare/1.1.0...1.2.0) (2021-07-23)
+
+
+### Bug Fixes
+
+* Don't break when elements which should be replaced with lock results cannot be found. Also, remove dependency on jQuery. ([6649c86](https://github.com/patternslib/pat-doclock/commit/6649c86dc4e84931eb71f11bfe969774c4db4306))
+* Use input event which also handles changed, paste and keyup, also for contenteditable elements. ([aebee20](https://github.com/patternslib/pat-doclock/commit/aebee20148f0061a382d4ac78771baeb526aa7de))
+* Use MutationObserver instead of deprecated DOMNodeRemoved event. ([1487d78](https://github.com/patternslib/pat-doclock/commit/1487d7814b7ad75d3fcc7c4f0dd7fdc55feecefa))
+
+
+### Maintenance
+
+* Adding debug messages. ([d218da4](https://github.com/patternslib/pat-doclock/commit/d218da459c19ee6b8ac67603c1c84357932c3ca6))
+* Modernize code. ([2c3c34d](https://github.com/patternslib/pat-doclock/commit/2c3c34d476363a8892d05ce8f88cfe337ec97f7e))
+* Remove dependency on jQuery. ([fc62194](https://github.com/patternslib/pat-doclock/commit/fc6219470325510c294d15a6d411e35c0d54f600))
+* Use async fetch to lock/unlock. ([bd44133](https://github.com/patternslib/pat-doclock/commit/bd44133bdd7ac28f65a1c462b0ba9f96fb5232c9))
+
 ## [1.1.0](https://github.com/patternslib/pat-doclock/compare/1.0.1...1.1.0) (2021-06-15)
 
 
