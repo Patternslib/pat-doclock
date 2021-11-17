@@ -1,3 +1,20 @@
+## [2.0.0](https://github.com/patternslib/pat-doclock/compare/1.2.0...2.0.0) (2021-11-17)
+
+
+### Breaking Changes
+
+* Upgrade to Webpack 5. ([22d559a](https://github.com/patternslib/pat-doclock/commit/22d559adcda3be7c774711cc58da338f537f2fc2))
+
+
+
+### Maintenance
+
+* **build:** Extend Patternslib release-it config file. ([a2870c2](https://github.com/patternslib/pat-doclock/commit/a2870c20c8c3715083498df11af34d06c1ecf90d))
+
+* **build:** Release on GitHub releases. ([03cec09](https://github.com/patternslib/pat-doclock/commit/03cec09da7d1706090a6678e2288a4f2a858a888))
+
+* Upgrade up to minor versions. ([94df2a3](https://github.com/patternslib/pat-doclock/commit/94df2a3df4f7c96b7a1be01a62258b41185df6e4))
+
 ## [1.2.0](https://github.com/patternslib/pat-doclock/compare/1.1.0...1.2.0) (2021-07-23)
 
 
