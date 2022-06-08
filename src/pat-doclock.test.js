@@ -1,4 +1,3 @@
-import "regenerator-runtime/runtime"; // needed for ``await`` support
 import pattern from "./pat-doclock";
 import utils from "@patternslib/patternslib/src/core/utils";
 import { jest } from "@jest/globals";
