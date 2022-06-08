@@ -4,8 +4,8 @@
     "description": "A pattern for doclock",
     "license": "MIT",
     "main": "./src/pat-doclock.js",
-    "dependencies": {
-        "@patternslib/patternslib": "^6.0.1"
+    "peerDependencies": {
+        "@patternslib/patternslib": "*"
     },
     "devDependencies": {
         "@babel/core": "^7.16.0",
