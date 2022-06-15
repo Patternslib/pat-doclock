@@ -1,3 +1,63 @@
+# Changelog
+
+
+
+## [3.0.0-alpha.0](https://github.com/patternslib/pat-doclock/compare/2.0.0...3.0.0-alpha.0) (2022-06-15)
+
+
+### Features
+
+
+* **Build:** Build module federation enabled bundles. ([6301f27](https://github.com/patternslib/pat-doclock/commit/6301f271ffea54345028833ec37cefbc4ff7cbb1))
+
+
+### Breaking Changes
+
+
+* Depend on @patternslib/dev and extend config from there. ([8248023](https://github.com/patternslib/pat-doclock/commit/824802359208477c093f63d95b8221195706b976))
+
+* Extend babel config from @patternslib/dev. ([ab78a01](https://github.com/patternslib/pat-doclock/commit/ab78a0196d6dab6428ea1f74f34509250822fbbe))
+
+* Extend commitlint config from @patternslib/dev. ([30520b4](https://github.com/patternslib/pat-doclock/commit/30520b408be40611307c7c9cd94ccb755e2278dc))
+
+* Extend eslint config from @patternslib/dev. ([e204de7](https://github.com/patternslib/pat-doclock/commit/e204de73d199f7da640cfdbeffb7a9ea8bf7607f))
+
+* Extend jest config from @patternslib/dev. ([1d8b72c](https://github.com/patternslib/pat-doclock/commit/1d8b72cb30f75bdee521af3417a81fbcd30fa96c))
+
+* Extend Makefile from @patternslib/dev. ([6be2c2a](https://github.com/patternslib/pat-doclock/commit/6be2c2ac4ee5459b0f0f3ab2d6caa9f73462ef17))
+
+* Extend prettier config from @patternslib/dev. ([17c9a63](https://github.com/patternslib/pat-doclock/commit/17c9a63484578682aee63d866a0a4b97e0c1c142))
+
+* Extend release-it config from @patternslib/dev. ([b208397](https://github.com/patternslib/pat-doclock/commit/b208397bdb776cb179f56b18f2628c199c7131ef))
+
+* Extend webpack config from @patternslib/dev. ([2c11414](https://github.com/patternslib/pat-doclock/commit/2c1141461e16c4ca406c4566d0296c507db4658d))
+
+
+### Maintenance
+
+
+* **build:** Add build:dev script to package.json to create a unminified development build. ([9e8f845](https://github.com/patternslib/pat-doclock/commit/9e8f84560658e9cd3b7cf7a22a9865169d4abfa1))
+
+* **Build:** @patternslib/patternslib as peerDependency. ([c2c0878](https://github.com/patternslib/pat-doclock/commit/c2c08784410ccae172806eea1c465c394bb32c2a))Move @patternslib/patternslib dependency to peerDependencies and set to any version to avoid version conflicts when this package is a dependency of another Patternslib based package.
+
+* **Build:** Add @patternslib/patternslib also to devDependencies so that we get it installed. ([ecf2aa9](https://github.com/patternslib/pat-doclock/commit/ecf2aa979a280f311fd5c6ab7a6e1717b66ffc06))
+
+* **Build:** Add keyword "patternslib" to package.json. ([d41546a](https://github.com/patternslib/pat-doclock/commit/d41546a584dc5747e7d0a0aa4e47b2e21c9ae6bd))
+
+* **Build:** Extend jest.config.js from Patternslib and reuse their setupTests file too. ([2b58f3e](https://github.com/patternslib/pat-doclock/commit/2b58f3e99c1438fd0020953621ace715b2d61e18))
+
+* **Build:** Keep yarn.lock in repository. ([a1bb43a](https://github.com/patternslib/pat-doclock/commit/a1bb43a69328368318c6c28f653e8f89234b446a))
+
+* **Build:** Makefile - Allow OTP when publishing to npm, build bundles and publish them on GitHub, add pre-release targets. ([6cae42f](https://github.com/patternslib/pat-doclock/commit/6cae42f28cbb636b835f20352507deb2a51ff8c2))
+
+* **Build:** Remove dependency regenerator-runtime except from test setup. The async/await runtime handling is already built-in in current Babel. ([10e99c7](https://github.com/patternslib/pat-doclock/commit/10e99c77fa55d5d1e79124fb41092bcc973ddda8))
+
+* **Build:** Update GitHub actions setup. ([175dbf9](https://github.com/patternslib/pat-doclock/commit/175dbf90c0738315d004e8e109afd3aa32b3185e))
+
+* **Build:** Upgrade and cleanup dependencies. ([ec10e15](https://github.com/patternslib/pat-doclock/commit/ec10e15aed1cf6d2e011cf510fccc527b9275273))
+
+* **webpack:** Configure devServer static directory. ([2d74f68](https://github.com/patternslib/pat-doclock/commit/2d74f68bc6246de84aded1aab287ce196e61ad72))
+
 ## [2.0.0](https://github.com/patternslib/pat-doclock/compare/1.2.0...2.0.0) (2021-11-17)
 
 
@@ -62,10 +122,7 @@
 * Upgrade to Patternslib v4 final - doclock customizations. ([0d0c4bb](https://github.com/patternslib/pat-doclock/commit/0d0c4bb5e663f6319eab09fc7c75ae5163dc2602))
 * Upgrade to Patternslib v4 final. ([d5f1da1](https://github.com/patternslib/pat-doclock/commit/d5f1da1f565b830ce253dd5219ae74188097851d))
 
-# Changelog
-
 
 ## 1.0.0 - unreleased
 
 - Upgrade to ES6.
-
