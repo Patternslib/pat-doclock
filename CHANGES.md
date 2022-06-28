@@ -2,6 +2,16 @@
 
 
 
+## [3.0.0](https://github.com/patternslib/pat-doclock/compare/3.0.0-alpha.0...3.0.0) (2022-06-28)
+
+
+### Maintenance
+
+
+* @patternslib/patternslib needs to be installed. Adding to devDependencies to avoid version clashes with other packages depending on it. ([91946be](https://github.com/patternslib/pat-doclock/commit/91946bec92bed47b4b98fd734f40566a6e81922f))
+
+* Upgrade to @patternslib/dev 2.2.0 and adapt module federation config. ([1f87b4d](https://github.com/patternslib/pat-doclock/commit/1f87b4db1ff545cff6b695ccc12afad5e294b985))
+
 ## [3.0.0-alpha.0](https://github.com/patternslib/pat-doclock/compare/2.0.0...3.0.0-alpha.0) (2022-06-15)
 
 

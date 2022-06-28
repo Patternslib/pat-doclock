@@ -1,6 +1,6 @@
 {
     "name": "@patternslib/pat-doclock",
-    "version": "3.0.0-alpha.0",
+    "version": "3.0.0",
     "description": "A pattern for doclock",
     "license": "MIT",
     "main": "./src/pat-doclock.js",
