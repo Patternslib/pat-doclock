@@ -4,11 +4,9 @@
     "description": "A pattern for doclock",
     "license": "MIT",
     "main": "./src/pat-doclock.js",
-    "peerDependencies": {
-        "@patternslib/patternslib": "*"
-    },
     "devDependencies": {
-        "@patternslib/dev": "^2.2.0"
+        "@patternslib/dev": "^2.2.0",
+        "@patternslib/patternslib": "*"
     },
     "scripts": {
         "start": "NODE_ENV=development webpack serve --config webpack.config.js",
