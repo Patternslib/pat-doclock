@@ -4,6 +4,7 @@
     "description": "A pattern for doclock",
     "license": "MIT",
     "main": "./src/pat-doclock.js",
+    "packageManager": "pnpm@12.16.1",
     "devDependencies": {
         "@patternslib/dev": "^4.4.0",
         "@patternslib/patternslib": "9.11.1"
